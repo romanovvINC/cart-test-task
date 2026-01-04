@@ -1,0 +1,6 @@
+.container {
+  background:var(--transparent-bg-1);
+  backdrop-filter: var(--transparent-bg-1-blur);
+  height: var(--header-height);
+  border-bottom: 1px solid rgba(128, 128, 128, 0.1);
+}
