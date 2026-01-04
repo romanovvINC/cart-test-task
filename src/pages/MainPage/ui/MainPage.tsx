@@ -1,16 +1,19 @@
-import React, { memo } from 'react';
-import { useTranslation } from 'react-i18next';
-import { Page } from 'widgets/Page/Page';
+import React, {memo, useCallback} from 'react';
+import cls from './MainPage.module.scss';
+import {useNavigate} from "react-router";
 
 const MainPage = () => {
-    const { t } = useTranslation('main');
+    const navigate = useNavigate();
+
+    const handleNavigateToProducts = useCallback(() => {
+        navigate('/products')
+    }, [navigate])
 
     return (
-        <Page>
-            <div>
-                {t('Главная страница')}
-            </div>
-        </Page>
+        <div className={cls.container}>
+            <h1>Здесь пока пусто</h1>
+            <button onClick={handleNavigateToProducts}>Перейти к товарам</button>
+        </div>
     );
 };
 

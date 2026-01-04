@@ -1,21 +1,14 @@
-import React, {memo, useCallback} from 'react';
+import React, {memo} from 'react';
 import {ProductsList} from "../../../entities/Products";
-import cls from './MainPage.module.scss';
-import {useNavigate} from "react-router";
+import cls from './ProductsPage.module.scss';
 
-const MainPage = () => {
-    const navgiate = useNavigate();
-
-    const handleNavigateToProducts = useCallback(() => {
-        navgiate('/products')
-    }, [navgiate])
+const ProductsPage = () => {
 
     return (
         <div className={cls.container}>
-            <h1>Здесь пока пусто</h1>
-            <button onClick={handleNavigateToProducts}>Перейти к товарам</button>
+            <ProductsList />
         </div>
     );
 };
 
-export default memo(MainPage);
+export default memo(ProductsPage);

@@ -1,13 +1,14 @@
 import React, { memo } from 'react';
-import {ProductsList} from "../../../entities/Products";
-import cls from './MainPage.module.scss';
+import cls from './CartPage.module.scss';
+import {CartProductsList} from "../../../entities/Products/ui/CartProductsList/CartProductsList";
 
-const MainPage = () => {
+const CartPage = () => {
     return (
         <div className={cls.container}>
-            <ProductsList />
+            <h2>Корзина</h2>
+            <CartProductsList />
         </div>
     );
 };
 
-export default memo(MainPage);
+export default memo(CartPage);

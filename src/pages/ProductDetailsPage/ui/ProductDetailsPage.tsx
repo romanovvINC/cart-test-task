@@ -1,13 +1,16 @@
 import React, { memo } from 'react';
-import {ProductsList} from "../../../entities/Products";
-import cls from './ProductsPage.module.scss';
+import cls from './ProductDetailsPage.module.scss';
+import {useParams} from "react-router-dom";
+import {ProductDetails} from "../../../entities/Products/ui/ProductDetails/ProductDetails";
 
-const ProductsPage = () => {
+const ProductDetailsPage = () => {
+    const { id } = useParams<{id: string}>();
+
     return (
         <div className={cls.container}>
-            <ProductsList />
+            <ProductDetails id={id} />
         </div>
     );
 };
 
-export default memo(ProductsPage);
+export default memo(ProductDetailsPage);
