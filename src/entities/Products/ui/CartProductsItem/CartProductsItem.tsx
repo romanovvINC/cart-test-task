@@ -1,6 +1,6 @@
 import cls from './CartProductsItem.module.scss';
 import clsx from "clsx";
-import {ICartProduct, IProduct} from "../../model/types/product";
+import {ICartProduct} from "../../model/types/product";
 import {useNavigate} from "react-router";
 import {useCallback} from "react";
 import {observer} from "mobx-react-lite";
@@ -27,7 +27,7 @@ export const CartProductsItem = observer((props: ProductCardProps) => {
         if (product) {
             cartStore.removeProductFromCart(product.id)
         }
-    }, [navigate, product, cartStore])
+    }, [product])
 
     if (tableHeader) {
         return (
@@ -37,7 +37,7 @@ export const CartProductsItem = observer((props: ProductCardProps) => {
                 <h4 className={cls.price}>Цена</h4>
                 <h4 className={cls.name}>Цвет</h4>
                 <h4 className={cls.size}>Размер</h4>
-                <h4 className={cls.name}></h4>
+                <h4 className={cls.name}> </h4>
             </div>
         )
     }
@@ -45,7 +45,7 @@ export const CartProductsItem = observer((props: ProductCardProps) => {
     if (product) {
         return (
             <div className={clsx(cls.container, className)} key={product.id} onClick={handleClickCard}>
-                <img alt='card-image' src={product.imageSrc} />
+                <img alt='card' src={product.imageSrc} />
                 <p className={cls.name}>{product.name}</p>
                 <p className={cls.price}>{product.price}</p>
                 <p className={cls.name}>{product.colorName}</p>

@@ -2,7 +2,7 @@ import cls from './ProductDetails.module.scss';
 import clsx from "clsx";
 import {useCallback, useEffect, useState} from "react";
 import {ICartProduct, IProduct, IProductColor} from "../../model/types/product";
-import {getProduct, getProducts, getSizes} from "../../../../app/services/api";
+import {getProduct, getSizes} from "../../../../app/services/api";
 import Skeleton from "react-loading-skeleton";
 import {Select, SelectOption} from "../../../../shared/ui/Select/Select";
 import {IProductSize} from "../../model/types/size";
@@ -68,7 +68,7 @@ export const ProductDetails = observer(({ id, className }: ProductListProps) => 
                 setIsSizesLoading(false)
             });
         }
-    }, [id])
+    }, [id, handleChangeCurrentColor])
 
     useEffect(() => {
         setIsAddedToCart(false);
@@ -104,12 +104,12 @@ export const ProductDetails = observer(({ id, className }: ProductListProps) => 
                         {
                             currentColor.images.map((i) =>
                                 <button onClick={() => setCurrentImageSrc(i)} className={clsx(i === currentImageSrc && cls.active)} key={i}>
-                                    <img alt='choose product image' src={i} />
+                                    <img alt='choose product' src={i} />
                                 </button>
                             )
                         }
                     </div>
-                    <img alt='product image' className={cls.productImage} src={currentImageSrc} />
+                    <img alt='product' className={cls.productImage} src={currentImageSrc} />
                 </div>
                 <div className={cls.right}>
                     <div className={cls.controls}>
@@ -123,7 +123,7 @@ export const ProductDetails = observer(({ id, className }: ProductListProps) => 
                             {
                                 product.colors.map((c) =>
                                     <button onClick={() => handleChangeCurrentColor(c)} className={clsx(c.id === currentColor.id && cls.active)} key={c.id}>
-                                        <img alt='product image' src={c.images[0]} />
+                                        <img alt='product' src={c.images[0]} />
                                         <p>{c.name}</p>
                                     </button>
                                 )

@@ -15,12 +15,12 @@ export const ProductCard = memo((props: ProductCardProps) => {
 
     const handleClickCard = useCallback(() => {
         navigate(`/products/${product.id}`)
-    }, [navigate])
+    }, [navigate, product.id])
 
     return (
         <div className={clsx(cls.container, className)} key={product.id} onClick={handleClickCard}>
             <div className={cls.top}>
-                <img alt='card-image' src={product.colors[0].images[0]} />
+                <img alt='card' src={product.colors[0].images[0]} />
             </div>
             <div className={cls.bottom}>
                 <h3>{product.name}</h3>
